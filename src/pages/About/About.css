@@ -1,0 +1,42 @@
+.about-container{
+    padding: 50px 0;
+}
+.about-info{
+    text-align: left;
+}
+.about-info h1{
+    font-weight: bold;
+}
+.about-info p{
+    text-align: left;
+}
+.about-img img{
+    border-radius: 10px;
+}
+.read-btn{
+    border-radius: 30px;
+    color: #2952AE;
+    font-weight: 500;
+    background-color: #f0f0f0; 
+}
+.read-btn:hover{
+    border: 1px solid crimson;
+    color: #fff;
+    background-color: #2952AE;
+}
+.patient-review{
+    height: 200px;
+    box-shadow: 3px 5px 10px lightgray;
+    background-color: #ecebeb;
+}
+.patient-review:hover{
+    overflow: hidden;
+    transform: scale(1.1);
+    transition: transform 1.5s;
+}
+.patient-text{
+    padding: 10px;
+}
+.patient-text p {
+    text-align: left;
+}

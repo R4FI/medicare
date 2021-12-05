@@ -1,0 +1,8 @@
+.avatarimg{
+    height: 70px;
+    width: 70px;
+}
+.redirectlog{
+    text-decoration: none;
+   border-bottom: 1px solid red;
+}

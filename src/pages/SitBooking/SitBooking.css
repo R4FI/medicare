@@ -1,0 +1,22 @@
+.booking-container{
+    padding: 50px 0;
+}
+.body{
+    height: 600px;
+    /* background-image: url(../../images/banner/banner.jpg); */
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+}
+.book-img img{
+    border-radius: 5px;
+}
+.details-info{
+    width: 100%;
+    box-shadow: 5px 5px 10px gray;
+    background-color: #2952AE;
+    color: #fff;
+    border-radius: 10px;
+    text-align: left;
+}

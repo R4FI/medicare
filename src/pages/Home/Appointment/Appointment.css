@@ -1,0 +1,12 @@
+.appointment{
+    padding: 50px 0;
+}
+.image-cart img{
+    width: 200px;
+    border-radius: 10px;
+}
+.demo{
+    height: 300px;
+    box-shadow: 2px 4px 10px gray;
+    border-radius: 5px;
+}

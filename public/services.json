@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Department of Medicine",
+        "deptHead": "Dr Mahmudur Rocky",
+        "description": "The benefits of medicines are the helpful effects you get, such as easing pain, controlling blood sugar, lowering blood pressure, or curing an infection.",
+        "img": "https://i.ibb.co/RT5QxmC/pic1.jpg",
+        "email": "medicineabs@gmail.com"
+    },
+    {
+        "id": 2,
+        "name": "Covid Unit",
+        "deptHead": "Dr Kamal Hossain",
+        "description": "Scientists are trying to make new medicines and test some existing drugs to see whether they can treat COVID-19. In the meantime, there are a number of things that can relieve symptoms, both at home and at the hospital.",
+        "img": "https://i.ibb.co/V3zYHVG/pic2.jpg",
+        "email": "covida2c@gmail.com"
+    },
+    {
+        "id": 3,
+        "name": "Surgical Service",
+        "deptHead": "Dr MD Shazeeb",
+        "description": "The purpose of surgery varies, but it may be recommended for making a diagnosis, removing damaged tissue or an obstruction, repairing or repositioning tissues or organs.",
+        "img": "https://i.ibb.co/HHdtdkd/pic3.jpg",
+        "email": "surgery123@gmail.com"
+    },
+    {
+        "id": 4,
+        "name": "Cardiology",
+        "deptHead": "Dr Jahanghir Ahmed",
+        "description": "You have shortness of breath, palpitations or dizziness. A cardiologist can determine if a heart condition is the cause. These symptoms may be a sign of abnormal heart rhythm or coronary artery disease.",
+        "img": "https://i.ibb.co/RgLZxT5/pic4.jpg",
+        "email": "cardiac32a@gmail.,com"
+    },
+    {
+        "id": 5,
+        "name": "Orthopedics",
+        "deptHead": "Dr Shamshuddin Hoque",
+        "description": "Broken bones, compression fractures, stress fractures, dislocations, muscle injury, and tendon tears or ruptures are common reasons people visit orthopedic doctors.",
+        "img": "https://i.ibb.co/4gYtBwt/pic5.jpg",
+        "email": "orthopedic@gmail.com"
+    },
+    {
+        "id": 6,
+        "name": "Department of Neurology",
+        "deptHead": "Dr Athaur Rahman",
+        "description": "Neurologists are specialists who treat diseases of the brain and spinal cord, peripheral nerves and muscles.",
+        "img": "https://i.ibb.co/0rLWqRt/pic6.jpg",
+        "email": "neurology@gmail.com"
+    }
+]

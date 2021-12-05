@@ -1,0 +1,58 @@
+.footer-container{
+    margin-top: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    height: 100%;
+    background-color:#132031;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.footer-logo img{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+.footer-title{
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.footer-details{
+    text-align: center;
+}
+.footer-details p{
+    text-align: center;
+}
+.footer-menu{
+    padding: 50px 0; 
+}
+.footer-menu h4{
+    color: lightgray;
+    padding-bottom: 5px;
+    text-align: left;
+}
+ul{
+    text-align: left;
+}
+ ul li{
+    list-style: none;
+    margin-bottom: 10px;
+}
+ ul li a{
+    text-decoration: none;
+}
+.menu{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.menu:hover{
+    color: bisque;
+}
+.contact-info{
+    text-align: left;
+}
