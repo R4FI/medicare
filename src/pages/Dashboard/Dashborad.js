@@ -21,9 +21,10 @@ import {
 } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
 
-import { Home, Logout} from '@mui/icons-material';
+import { AddModerator, Home, Logout} from '@mui/icons-material';
 import AddDoctor from './AddDoctor/AddDoctor';
 import AddMedicalAttendee from './AddMedicalAttendee/AddMedicalAttendee';
+import Makeadmin from './Makeadmin/Makeadmin';
 
 
 
@@ -78,7 +79,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const {admin,logout} = useAuth();
+  const {logout} = useAuth();
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -128,26 +129,14 @@ export default function PersistentDrawerLeft() {
         <Divider />
 
         <Link to="/home"><Button startIcon={<Home/>}>Home</Button></Link> 
-         { !admin &&
+        
           <Box>
           <Link to={`${url}/adddoctor`}><Button startIcon={<PersonAddIcon/>}>Add Doctor</Button></Link>  <br />
           <Link to={`${url}/medicalattendee`}><Button startIcon={<PersonAddIcon />}>Add Medical Attendee</Button></Link>  <br />
+          <Link to={`${url}/makeAdmin`}><Button startIcon={<AddModerator/>}>Make Admin</Button></Link> <br />
           <Button startIcon={<Logout/>}
          onClick={logout} >Log Out</Button>
            </Box>
-            
-        }
-          
-          {/* {
-            admin &&
-          <Box>
-          <Link to={`${url}/manageOrder`}><Button startIcon={<ModeEdit />}>Manage All Order</Button></Link>
-          <Link to={`${url}/addproduct`}><Button startIcon={<AddBox/>}>Add Products</Button></Link> <br />
-          <Link to={`${url}/makeAdmin`}><Button startIcon={<AddModerator/>}>Make Admin</Button></Link> <br />
-          <Link to={`${url}/manageProduct`}><Button startIcon={<Assignment />}>Manage Product</Button></Link><br /> 
-          <Button startIcon={<Logout/>}
-         onClick={logout} >Log Out</Button>
-          </Box>} */}
         
       </Drawer>
       <Main open={open}>
@@ -159,6 +148,9 @@ export default function PersistentDrawerLeft() {
               </Route>
             <Route exact path={`${path}/medicalattendee`}>
              <AddMedicalAttendee></AddMedicalAttendee>
+              </Route>
+            <Route exact path={`${path}/makeAdmin`}>
+             <Makeadmin></Makeadmin>
               </Route>
       </Switch>
         </Typography>

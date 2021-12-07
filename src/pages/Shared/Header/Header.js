@@ -10,7 +10,8 @@ import './Header.css';
 
 
 const Header = () => {
-    const { user, logout } = useAuth()
+    const { user, logout } = useAuth();
+    const {admin} = useAuth()
     return (
         <>
             {/* bg="dark" variant="dark" */}
@@ -42,24 +43,15 @@ const Header = () => {
                             to="/appointment"
                             className="item"
                         >Appointment</Nav.Link>
-                        <Nav.Link
+                       { admin &&
+                       <Nav.Link
                             as={Link}
                             to="/dashboard"
                             className="item"
                         >Dashboard</Nav.Link>
+                    }
 
-                        {user?.email ?
-
-                            <button
-                                onClick={logout}
-                                className="btn btn-secondary me-2">LogOut</button>
-
-                            : <Nav.Link
-                                as={Link}
-                                to="/login"
-                                className="item"
-                            >Login</Nav.Link>}
-
+                       
                         <Nav.Link
                             as={Link}
                             to="/register"
@@ -72,6 +64,18 @@ const Header = () => {
                             className="item"
                         >About</Nav.Link>
 
+                            {user?.email ?
+
+                            <button
+                                onClick={logout}
+                                className="btn btn-secondary me-2">LogOut</button>
+
+                            : <Nav.Link
+                                as={Link}
+                                to="/login"
+                                className="item"
+                            >Login</Nav.Link>
+                            }
 
                         <Navbar.Text>
                             {user?.email &&

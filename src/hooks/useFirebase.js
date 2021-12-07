@@ -80,8 +80,7 @@ const googleProvider = new GoogleAuthProvider();
 
     useEffect(()=>{
       const unSubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-             
+            if (user) { 
               setUser(user);
               getIdToken(user)
               .then(idToken=>{
@@ -96,13 +95,11 @@ const googleProvider = new GoogleAuthProvider();
           return () => unSubscribe;
      },[auth])
 
-    //  useEffect(()=>{
-    //    fetch(`http://localhost:5000/${user.email}`)
-    //    .then(res => res.json())
-    //    .then(data=>setAdmin(data.admin))
-
-    //  },[user.email]);
-
+     useEffect(() => {
+      fetch(`http://localhost:5000/users/${user.email}`)
+          .then(res => res.json())
+          .then(data => setAdmin(data.admin))
+  }, [user.email])
 
     const logout = () => {
       setisLoading(true);
