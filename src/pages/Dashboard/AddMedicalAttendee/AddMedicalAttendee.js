@@ -1,51 +1,103 @@
-import React from 'react';
-import { Container, Row,Col } from 'react-bootstrap';
-import img from "../../../images/adddoctor/doctor.png";
+import React,{ useEffect, useState } from 'react';
+import {  Col, Container,Row,Table } from 'react-bootstrap';
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import { Input } from '@mui/material';
-const AddMedicalAttendee = () => {
+import { Alert, TextField } from '@mui/material';
+import img from "../../../images/adddoctor/doctors.png"
+
+const AddMedicalattende = () => {
+  const [email,setEmail] = useState('');
+  const [attende, setattende] = useState([]);
+  const [success, setSuccess] = useState(false);
+  
+//  use effect for fetch all attende info
+useEffect(() => {
+    fetch('http://localhost:5000/attende')
+        .then(res => res.json())
+        .then(data => setattende(data))
+}, [attende]); 
+
+const handleOnBlur = e => {
+    setEmail(e.target.value);
+}
+//   set role for attende
+  const handleAttendeSubmit = e => {
+      const user = { email };
+      fetch('http://localhost:5000/attende/attendee', {
+          method: 'PUT',
+          headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(user)
+      })
+          .then(res => res.json())
+          .then(data => {
+              if (data.modifiedCount) {
+                  console.log(data);
+                  setSuccess(true);
+              }
+          })
+          e.preventDefault()
+  }
     return (
         <div>
              <Container className="shadow-sm p-5 border">
-                <h4 className="text-center">Add Medical Attendee</h4>
-             <Row className="d-flex  jsutify-content-center align-items-center">
-                <Col md={6}>
-                <img src={img} className="w-50" alt="" />
-                </Col>
+
+                 <Row  className="d-flex  jsutify-content-center align-items-center">
+                     <Col md={6}>
+                     <img src={img} className="w-50" alt="" />
+                     </Col>
 
 
-                <Col md={6}>
-          <TextField className="w-50"
-          required
-          id="standard-required"
-          label="Required"
-          defaultValue="Your Email"
-          type="email"
-          variant="standard"
-        />
-        <br />
-        <TextField className="w-50"
-          required
-          id="standard-required"
-          label="Required"
-          type="password"
-          defaultValue="Password"
-          variant="standard"
-        />
-        <br />
-        <Stack direction="row" className="mt-1" alignItems="center" spacing={2}>
-      <label htmlFor="contained-button-file">
-        <Input accept="image/*" id="contained-button-file" multiple type="file" />  <br />
-        <Button className="mt-2" variant="outlined">Add Attendee</Button>
-      </label>
-    </Stack>
-                </Col>
-            </Row>
+                     <Col md={6}>
+                     <h2 className="pb-3">All Attende: {attende.length}</h2>
+
+        <Table striped bordered >
+           <thead>
+               <tr>
+                   <th>#</th>
+                   <th>Attende Name</th>
+                   <th>Attende Email</th>
+                   <th>Attende Number</th>
+                   {/* <th>Attende Image</th> */}
+               </tr>
+           </thead>
+           
+               {attende?.map((attendee,index)=>(
+                   <tbody>
+                   <tr>
+                       <td>{index}</td>
+                       <td>{attendee?.displayName}</td>
+                       <td>{attendee?.email}</td>
+                       <td>{attendee?.number}</td>
+                       {/* <td>{attendee?.image}</td> */}
+                       
+                       {/* <td>
+                       <Button  onClick={()=>{handleAttendeSubmit(attendee?.email)}}
+                           variant="contained">Add attende</Button>
+                           </td> */}
+                      
+                   </tr>
+               </tbody>
+              
+              ))}
+       
+       </Table>
+       <form onSubmit={handleAttendeSubmit}>
+           <TextField variant="standard" onBlur={handleOnBlur}>
+
+           </TextField>
+             <Button  
+                     type="submit"
+                       variant="contained">Add attende</Button>
+                           </form>
+       {success && <Alert severity="success">Added</Alert>}
+                     </Col>
+                 </Row>
+            
                 </Container>
         </div>
     );
 };
 
-export default AddMedicalAttendee;
+export default AddMedicalattende;
+ 

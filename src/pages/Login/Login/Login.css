@@ -18,8 +18,10 @@
     /* color: #224596; */
     color:#2382C4;
 }
-.login-banner {
+.login-banner img{
     width: 100%;
+
+   
 }
 .logIn-btn{
     color: #fff;

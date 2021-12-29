@@ -1,17 +1,14 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 import useAuth from '../../../hooks/useAuth';
-//
 import menuLogo from '../../../images/logo.jpg'
-//
 import './Header.css';
 
 
 const Header = () => {
-    const { user, logout } = useAuth();
-    const {admin} = useAuth()
+    const {admin,user,logout} = useAuth();
+
     return (
         <>
             {/* bg="dark" variant="dark" */}
@@ -38,11 +35,19 @@ const Header = () => {
                             className="item"
                         >Services</Nav.Link>
 
-                        <Nav.Link
+                            <Nav.Link 
                             as={Link}
                             to="/appointment"
                             className="item"
                         >Appointment</Nav.Link>
+                       
+                       { user?.email &&
+                       <Nav.Link
+                            as={Link}
+                            to="/profile"
+                            className="item"
+                        >Profile</Nav.Link>
+                    }
                        { admin &&
                        <Nav.Link
                             as={Link}
@@ -50,14 +55,6 @@ const Header = () => {
                             className="item"
                         >Dashboard</Nav.Link>
                     }
-
-                       
-                        <Nav.Link
-                            as={Link}
-                            to="/register"
-                            className="item"
-                        >Register</Nav.Link>
-
                         <Nav.Link
                             as={Link}
                             to="/about"
@@ -70,7 +67,8 @@ const Header = () => {
                                 onClick={logout}
                                 className="btn btn-secondary me-2">LogOut</button>
 
-                            : <Nav.Link
+                            : 
+                            <Nav.Link
                                 as={Link}
                                 to="/login"
                                 className="item"
@@ -79,9 +77,9 @@ const Header = () => {
 
                         <Navbar.Text>
                             {user?.email &&
-                                <span className="user">Signed in as <a href="#login">{user?.displayName}</a></span>
+                                <span className="user">Signed in as <a href="#">{user?.displayName}</a></span>
                             }
-                            <img src={user?.photoURL} className="profile" alt="" />
+                            <img src={user?.photoURL} to="/profile" className="profile" alt="" />
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>

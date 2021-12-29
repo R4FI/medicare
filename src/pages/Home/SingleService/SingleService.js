@@ -26,7 +26,10 @@ const SingleService = ({ service }) => {
                     </div>
                 </div>
             </div>
+            
         </div>
+
+      
     );
 };
 

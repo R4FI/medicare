@@ -14,7 +14,6 @@ const Login = () => {
         signInUsingGoogle,
        loginUser,
     } = useAuth();
-
     //for email and password
     const [loginData,setLogIndata] = useState({});
   
@@ -27,7 +26,7 @@ const Login = () => {
   }
   const handleLoginOnSubmit = e =>{
     loginUser(loginData.email, loginData.password, location, history);
-    e.preventDefault();
+        e.preventDefault();
 
   }
     // for data location and history
@@ -50,12 +49,12 @@ const Login = () => {
             <div className="container">
                 <div className="row d-flex align-items-center">
                     <div className="col-lg-6 col-md-6 col-12">
-                        <div className="login-banner">
+                        <div className="login-banner mt-5">
                             <img className="img-fluid" src={loginBanner} alt="" />
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-6 col-12">
-                        <div className="login-form mt-3">
+                        <div className="login-form mt-5">
                             <h2 className="text-center">Login Your Account</h2>
                             <div>
                                 <form onSubmit={handleLoginOnSubmit} className="w-75 mx-auto">

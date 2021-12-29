@@ -8,11 +8,10 @@ import useAuth from '../../../hooks/useAuth';
 const Doc = () => {
  //import from firebase authentication 
 const [loginData,setLogIndata] = useState({});
-const {registerUser,isLoading} = useAuth();
+const {registerDoctor,isLoading} = useAuth();
 
 //use for save data
 const handleOnBlur = e =>{
-    
   const field = e.target.name;
   const value = e.target.value;
   const newLogInData = {...loginData};
@@ -25,10 +24,9 @@ const handleOnBlur = e =>{
 const handleOnSubmit = e =>{
   if (loginData.password !== loginData.password2) {
     alert('Password Missmatch');
-  // <Alert severity="error">Password Missmatch</Alert>
     return
   }
-  registerUser(loginData.email , loginData.password,loginData.name, history);
+  registerDoctor(loginData.email , loginData.password,loginData.name,loginData.number, history);
   e.preventDefault();
 }
 

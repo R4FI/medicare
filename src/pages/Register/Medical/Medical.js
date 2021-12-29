@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import { Container, Row,Col,Button } from 'react-bootstrap';
+import { Container, Row,Col,Button, Spinner } from 'react-bootstrap';
 import { Input } from '@mui/material';
 import docs from "../../../images/adddoctor/doctors.png";
 import { Link,useHistory } from 'react-router-dom';
@@ -8,7 +8,7 @@ import useAuth from '../../../hooks/useAuth';
 const Medical = () => {
     //import from firebase authentication 
 const [loginData,setLogIndata] = useState({});
-const {registerUser,isLoading} = useAuth();
+const {registerAttendee,isLoading} = useAuth();
 
 //use for save data
 const handleOnBlur = e =>{
@@ -28,7 +28,7 @@ const handleOnSubmit = e =>{
   // <Alert severity="error">Password Missmatch</Alert>
     return
   }
-  registerUser(loginData.email , loginData.password,loginData.name, history);
+  registerAttendee(loginData.email , loginData.password,loginData.name,loginData.number,history);
   e.preventDefault();
 }
 const history = useHistory();
@@ -51,6 +51,7 @@ const history = useHistory();
                 </Row>
                 </Container>
             </form>
+            {isLoading && <Spinner animation="border" />}
         </div>
     );
 };

@@ -20,6 +20,7 @@ import Register from './pages/Register/Register';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import About from './pages/About/About';
 import Dashborad from './pages/Dashboard/Dashborad';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   return (
@@ -37,14 +38,12 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-
-
             <Route path="/services">
               <Services></Services>
             </Route>
-            <Route path="/dashboard">
+            <PrivateRoute path="/dashboard">
              <Dashborad></Dashborad>
-            </Route>
+            </PrivateRoute>
 
             <PrivateRoute path="/sitbooking/:bookingId">
               <SitBooking></SitBooking>
@@ -53,7 +52,11 @@ function App() {
             <PrivateRoute path="/appointment">
               <Appointment></Appointment>
             </PrivateRoute>
-
+            
+              <PrivateRoute path="/profile">
+              <Profile></Profile>
+          
+              </PrivateRoute>
             <Route path="/login">
               <Login></Login>
             </Route>
@@ -64,6 +67,7 @@ function App() {
             <Route path="/about">
               <About></About>
             </Route>
+           
 
             <Route exact path="*">
               <ErrorFound></ErrorFound>

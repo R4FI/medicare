@@ -1,38 +1,42 @@
-import React,{useState} from 'react';
-import { Container, Row,Col } from 'react-bootstrap';
+import React,{useState,useEffect} from 'react';
+import { Container, Row,Col, Table } from 'react-bootstrap';
 import img from "../../../images/adddoctor/doctor.png";
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
-import { Input } from '@mui/material';
 const AddDoctor = () => {
   const [email,setEmail] = useState('');
-  const [image,setImage] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [doctor, setdoctor] = useState([]);
+
+//  use effect for fetch all doctor info
+useEffect(() => {
+    fetch('http://localhost:5000/doctors')
+        .then(res => res.json())
+        .then(data => setdoctor(data))
+}, [doctor]); 
+
   const handleSubmit = e => {
-    e.preventDefault();
-    if (!image) {
-      return;
-      
-    }
-    const formData = new FormData();
-    formData.append('email',email); 
-    formData.append('image',image);
-    fetch('http://localhost:5000/doctors', {
-  method: 'POST',
-  body: formData
-})
-.then(response => response.json())
-.then(data => {
-  if(data.insertedId){
-    <Alert severity="success">Doctor Added Successfully</Alert>
+    const user = { email };
+    fetch('http://localhost:5000/doctors/doctor', {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.modifiedCount) {
+                console.log(data);
+                setSuccess(true);
+            }
+        })
 
-  }
-})
-.catch(error => {
-  console.error('Error:', error);
-});
-
+    e.preventDefault()
+}
+    const handleOnBlur = e => {
+      setEmail(e.target.value);
   }
     return (
         <div>
@@ -40,27 +44,54 @@ const AddDoctor = () => {
                 <h4 className="text-center">Add Doctor</h4>
              <Row className="d-flex  jsutify-content-center align-items-center">
                 <Col md={6}>
-                <img src={img} className="w-50" alt="" />
+                <img src={img} className="w-75" alt="" />
                 </Col>
 
 
                 <Col md={6}>
-          <form onSubmit={handleSubmit}>
-          <TextField className="w-50" onChange={e=>setEmail(e.target.value)}
-          required
-          id="standard-required"
-          label="Email"
-          type="email"
-          variant="standard"
-        />
-        <br />
-        <Stack direction="row" className="mt-1" alignItems="center" spacing={2}>
-      <label htmlFor="contained-button-file">
-        <Input onChange={e=>setImage(e.target.files[0])} accept="image/*" type="file" />  <br />
-        <Button type="submit" className="mt-2" variant="outlined">Add Doctor</Button>
-      </label>
-    </Stack>
-          </form>
+                <h2>All Doctor:{doctor.length}</h2>
+                <Table striped bordered >
+                   
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Doctor Name</th>
+                                <th>Doctor Email</th>
+                                <th>Doctor Number</th>
+                                {/* <th>Attende Image</th> */}
+                            </tr>
+                        </thead>
+                        
+                            {doctor?.map((doctors,index)=>(
+                                <tbody>
+                                <tr>
+                                    <td>{index}</td>
+                                    <td>{doctors?.displayName}</td>
+                                    <td>{doctors?.email}</td>
+                                    <td>{doctors?.number}</td>
+                                    {/* <td>{attendee?.image}</td> */}
+                                    
+                                    {/* <td>
+                                    <Button  onClick={()=>{handleAttendeSubmit(attendee?.email)}}
+                                        variant="contained">Add attende</Button>
+                                        </td> */}
+                                   
+                                </tr>
+                            </tbody>
+                           
+                           ))}
+                    
+                    </Table>
+                <form onSubmit={handleSubmit}>
+                <TextField
+                    sx={{ width: '50%' }}
+                    label="Email"
+                    type="email"
+                    onBlur={handleOnBlur}
+                    variant="standard" />
+                <Button type="submit" variant="contained">Make Doctor</Button>
+            </form>
+            {success && <Alert severity="success">Made Doctor Successfully!</Alert>}
                 </Col>
             </Row>
                 </Container>

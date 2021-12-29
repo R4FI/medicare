@@ -4,7 +4,6 @@ import img5 from '../../images/about/slider.jpg';
 
 import './About.css'
 import { Link } from 'react-router-dom';
-import Home from '../Home/Home/Home';
 import Header from '../Shared/Header/Header';
 import Footer from '../Shared/Footer/Footer';
 
@@ -12,7 +11,7 @@ const About = () => {
     return (
         <div>
            <Header></Header>
-            <div className="about-container">
+            <div className="about-container ">
                 <div className="container">
                     <div className="row  d-flex align-items-center about">
                         <div className="col-lg-5 col-md-5 col-sm-6">
@@ -27,7 +26,7 @@ const About = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-7 col-md-7 col-sm-6">
+                        <div className="col-lg-7 col-md-5 col-sm-5 mt-3">
                             <div className="about-img">
                                 <img src={img5} alt="" />
                             </div>
