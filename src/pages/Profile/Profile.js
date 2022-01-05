@@ -116,7 +116,13 @@ const Profile = () => {
         <option>Headeche</option>
         <option>Tiredness</option>
         <option>Nausea</option>
+        <option>Backache</option>
+        <option>Fatigue</option>
+        <option>Bloating</option>
+        <option>Insomnia</option>
         <option>Constipation</option>
+        <option>Diarrhea</option>
+        <option>Swelling</option>
       </Form.Select>
     </Form.Group>
 

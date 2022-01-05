@@ -7,7 +7,7 @@
 }
 .services-title::after{
     content: '';
-     margin: 0 auto;
+    margin: 0 auto;
     width: 50%; 
     height: 1px;
     display: block;

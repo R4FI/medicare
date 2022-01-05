@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+.sanitizefont{
+    font-size: 29px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+}
+
+.process{
+    display: flex;
+    flex-direction: column !important;
+}
+.imghand{
+    height: 60px;
+    width:  75px;
+}
